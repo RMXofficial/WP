@@ -1,0 +1,15 @@
+u mk.ukim.finki treba da kreirame prvo 4 packages (models, repository, service, web)
+e sega web ke ni bide glaven i u nego ke treba da kreirame sekoj servlet
+nadvor od ovia packages imame glavnata programa so ime na proekto (SEKOJ PAT KOGA KE PRAVEME NESTO TREBA NEA DA JA RUNuvame so localhost:port/pr)
+kaj nea sega za sega treba samo da napraveme (@SpringBootApplication(dadeno), @ServletComponentScan) odma nad clasata
+ovoa go praveme zatoa so po default spring ne gi prepoznava servletite
+sega ke gi kreirame servletite za sekoja strana i sekoj servlet treba da extends od HttpServlet
+i nad klatata treba da staveme @WebServlet(urlPatterns="/pr")
+sekoj servlet treba da ima nekoe od init() doGEt() doPost() (overridnuvame gi)
+sega u doGet treba da napraveme PrintWriter i da go flushneme u writero go stavame htmlto
+
+koga praveme categories treba da napraveme classa za categories i u nego da gi staveme samo elementite i nad nego da napraveme
+@AllArgsConstructor, @Getter, @Setter ovoa ni prave direktno se
+zatoa so ke treba da zacuvuvame povekje pati nesto ke koristeme listi ama Set za da izbegneme duplikati
+sega u init praveme nekolku pocetni kategorii za da se pustat odma koga ke ukluceme
+posle toa treba da napraveme metod addCategory za da dodavame kategorii

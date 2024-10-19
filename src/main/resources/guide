@@ -1,0 +1,2 @@
+tuka u resouces treba da napraveme html fajl ako ni treba za nekoja od stranite unatre u template packege (najbitno e th text da koristeme)
+a u application.properties treba da gi staveme porta so (server.port=8080)
