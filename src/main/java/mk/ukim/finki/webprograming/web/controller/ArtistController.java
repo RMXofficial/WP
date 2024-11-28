@@ -8,10 +8,7 @@ import mk.ukim.finki.webprograming.service.ArtistService;
 import mk.ukim.finki.webprograming.service.SongService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 import org.thymeleaf.web.IWebExchange;
@@ -45,4 +42,44 @@ public class ArtistController {
         songService.findByTrackId(trackId).ifPresent(song -> songService.addArtistToSong(artist, song));
         return "redirect:/songDetails?trackId=" + trackId;
     }
+//    @PostMapping("")
+//    protected String doPost(@RequestParam String trackId, @RequestParam String artistId, Model model) throws ServletException, IOException {
+//        Artist artist = artistService.findById(Long.parseLong(artistId));
+//
+//        songService.findByTrackId(trackId).ifPresent(song -> {
+//            if (song.getArtists().size() < 2) {
+//                songService.addArtistToSong(artist, song);
+//            } else {
+//                model.addAttribute("error", "A song can only have a maximum of 2 artists.");
+//            }
+//        });
+//        return "redirect:/songDetails?trackId=" + trackId;
+//    }
+@GetMapping("/edit/{artistId}")
+public String editArtist(@PathVariable Long artistId, Model model) {
+    Artist currentArtist = artistService.findById(artistId);
+
+    model.addAttribute("artist", currentArtist);
+
+    return "editArtist.html";
+}
+    @PostMapping("/edit")
+    public String editArtist(@RequestParam Long artistId,
+                             @RequestParam String firstName,
+                             @RequestParam String lastName,
+                             @RequestParam String bio,
+                             Model model) {
+        Artist artist = new Artist(artistId, firstName, lastName, bio);
+
+        artistService.saveArtist(artist);
+
+        return "redirect:/artist";
+    }
+
+    @PostMapping("/delete/{artistId}")
+    public String deleteArtist(@PathVariable Long artistId, Model model) {
+        artistService.deleteArtistById(artistId);
+        return "redirect:/artist";
+    }
+
 }

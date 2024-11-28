@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Artist</title>
+</head>
+<body>
+<form th:action="'/artists/edit'" method="post">
+    <input name="artistId" type="hidden" th:value="${artist.id}">
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" name="firstName" th:value="${artist.firstName}" required>
+    <br><br>
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" name="lastName" th:value="${artist.lastName}" required>
+    <br><br>
+    <label for="bio">Bio:</label>
+    <textarea id="bio" name="bio" required>${artist.bio}</textarea>
+    <br><br>
+    <button type="submit">Submit</button>
+</form>
+</body>
+</html>

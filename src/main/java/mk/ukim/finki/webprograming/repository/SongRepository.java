@@ -31,14 +31,27 @@ public class SongRepository {
         return DataHolder.songs.stream().filter(song -> song.getTrackId().equals(trackId)).findFirst();
     }
 
-    public Artist addArtistToSong(Artist artist, Song song) {
-        DataHolder.songs.stream().filter(tempSong -> tempSong.equals(song)).forEach(tempSong -> {
-            List<Artist> currentPerformers = tempSong.getPerformers();
+//    public Artist addArtistToSong(Artist artist, Song song) {
+//        DataHolder.songs.stream().filter(tempSong -> tempSong.equals(song)).forEach(tempSong -> {
+//            List<Artist> currentPerformers = tempSong.getPerformers();
+//            currentPerformers.add(artist);
+//            tempSong.setPerformers(currentPerformers);
+//        });
+//        return artist;
+//    }
+public Artist addArtistToSong(Artist artist, Song song) {
+    DataHolder.songs.stream().filter(tempSong -> tempSong.equals(song)).forEach(tempSong -> {
+        List<Artist> currentPerformers = tempSong.getPerformers();
+        if (currentPerformers.size() < 2) {
             currentPerformers.add(artist);
             tempSong.setPerformers(currentPerformers);
-        });
-        return artist;
-    }
+        }
+        else {
+            throw new IllegalStateException("A song can only have a maximum of 2 artists.");
+        }
+    });
+    return artist;
+}
 
     public void saveSong(Song song, Long albumId) {
         DataHolder.songs.removeIf(song1 -> song1.getId().equals(song.getId()));
