@@ -20,4 +20,5 @@ public class EventRepository {
                         event.getPopularityScore() >= rating)
                 .toList();
     }
+
 }

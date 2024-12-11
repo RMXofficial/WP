@@ -23,4 +23,5 @@ public class Artist {
         this.lastName = lastName;
         this.bio = bio;
     }
+
 }

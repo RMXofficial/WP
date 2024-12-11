@@ -13,4 +13,5 @@ public interface ArtistRepository extends JpaRepository<Artist, Long> {
 
     List<Artist> findAll();
 
+
 }

@@ -32,4 +32,5 @@ public class BalloonRepository {
         return balloons.stream().filter(balloon -> balloon.getName().toLowerCase().contains(text.toLowerCase()) ||
                 balloon.getDescription().toLowerCase().contains(text.toLowerCase())).collect(Collectors.toList());
     }
+
 }

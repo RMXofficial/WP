@@ -65,5 +65,6 @@ public class DataHolder {
         events.add(new Event("Theater Play", "Drama play by local actors", 78));
         events.add(new Event("New Year's Eve Party", "Celebrate with live music and fireworks", 98));
         eventBookings = new ArrayList<>();
+
     }
 }

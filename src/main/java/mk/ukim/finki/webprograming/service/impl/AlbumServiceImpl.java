@@ -23,5 +23,6 @@ public class AlbumServiceImpl implements AlbumService {
     @Override
     public Album findOne(Long id) {
         return albumRepository.findOneById(id).orElse(null);
+
     }
 }

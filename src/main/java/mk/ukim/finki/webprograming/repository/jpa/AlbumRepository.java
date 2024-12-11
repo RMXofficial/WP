@@ -13,4 +13,5 @@ public interface AlbumRepository extends JpaRepository<Album, Long> {
     public List<Album> findAll();
 
     public Optional<Album> findOneById(Long id);
+
 }

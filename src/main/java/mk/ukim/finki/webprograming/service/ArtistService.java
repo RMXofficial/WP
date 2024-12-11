@@ -8,6 +8,4 @@ import java.util.List;
 public interface ArtistService{
     List<Artist> listArtists();
     Artist findById(Long id);
-    void deleteArtistById(Long artistId);
-    void saveArtist(Artist artist);
 }
