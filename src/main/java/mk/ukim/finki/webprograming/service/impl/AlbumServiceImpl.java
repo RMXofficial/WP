@@ -1,7 +1,7 @@
 package mk.ukim.finki.webprograming.service.impl;
 
 import mk.ukim.finki.webprograming.model.Album;
-import mk.ukim.finki.webprograming.repository.AlbumRepository;
+import mk.ukim.finki.webprograming.repository.jpa.AlbumRepository;
 import mk.ukim.finki.webprograming.service.AlbumService;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +22,6 @@ public class AlbumServiceImpl implements AlbumService {
 
     @Override
     public Album findOne(Long id) {
-        return albumRepository.findOne(id).orElse(null);
+        return albumRepository.findOneById(id).orElse(null);
     }
 }

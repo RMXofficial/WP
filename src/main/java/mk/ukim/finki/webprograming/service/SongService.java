@@ -8,8 +8,12 @@ public interface SongService{
     List<Song> listSongs();
     Artist addArtistToSong(Artist artist, Song song);
     Optional<Song> findByTrackId(String trackId);
-    void saveSong(Song song, Long albumId);
+    void saveSongFull(Song song, Long albumId);
     Optional<Song> findById(Long songId);
 
     void deleteSongById(Long songId);
+
+    void saveSong(String trackId, String title, String genre, int releaseYear, Long songId, Long albumId);
+
+    List<Song> findByAlbumId(String albumId);
 }

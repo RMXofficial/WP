@@ -5,8 +5,10 @@
 
 </head>
 <body>
+<header>
+    <h1>Song title</h1>
+</header>
 <section th:if="song">
-    <h1 th:text="'Song title: ' + ${song.getTitle()}"></h1>
     <h2 th:text="'Genre: ' + ${song.getGenre()}"></h2>
     <h2 th:text="'Year: ' + ${song.getReleaseYear()}"></h2>
     <h2>Performers:</h2>
