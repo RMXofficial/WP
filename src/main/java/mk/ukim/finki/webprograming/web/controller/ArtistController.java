@@ -23,7 +23,6 @@ import java.util.List;
 @Controller
 @RequestMapping("/artist")
 public class ArtistController {
-
     public final ArtistService artistService;
     public final SongService songService;
 
