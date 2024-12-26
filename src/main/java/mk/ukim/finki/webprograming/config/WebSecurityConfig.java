@@ -25,11 +25,12 @@ public class WebSecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/", "/register", "/songs", "/songDetails","/artist/**","listSongs/**")
+                        .requestMatchers("/", "/register", "/login")
                         .permitAll()
-                        .requestMatchers("/songs/**","/artist/**","listSongs/**","/artist","listSongs").hasRole("ADMIN")
+                        //.requestMatchers("/songs").hasRole("USER")
+                        .requestMatchers("/songs/edit/**","/songs/delete/**","/artist/**","listSongs/**","/artist").hasRole("ADMIN")
                         .anyRequest()
-                        .anonymous()
+                        .authenticated()
                 )
                 .httpBasic(Customizer.withDefaults())
                 .formLogin((form) -> form
@@ -51,11 +52,16 @@ public class WebSecurityConfig {
                 .password(passwordEncoder.encode("boris"))
                 .roles("USER")
                 .build();
+        UserDetails vanco = User.builder()
+                .username("vanco")
+                .password(passwordEncoder.encode("vanco"))
+                .roles("USER")
+                .build();
         UserDetails admin = User.builder()
                 .username("admin")
                 .password(passwordEncoder.encode("admin"))
                 .roles("ADMIN")
                 .build();
-        return new InMemoryUserDetailsManager(boris, admin);
+        return new InMemoryUserDetailsManager(boris, vanco, admin);
     }
 }
